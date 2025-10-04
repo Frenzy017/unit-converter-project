@@ -28,6 +28,7 @@ header {
   font-family: "Inter", bold;
   background-color: #6c48fd;
   color: white;
+  margin-top: -20px;
 }
 
 .header-digit {
@@ -44,7 +45,6 @@ header {
   align-items: center;
   font-family: "Inter", bold;
   color: #CCC1FF;
-  margin-top: 5px;
 }
 
 .convert-bg {

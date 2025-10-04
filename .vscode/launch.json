@@ -1,0 +1,80 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Single action: start Vite and automatically open a debuggable Chrome tab.
+      "name": "Default Dev (Vite + Auto Browser)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "args": ["vite"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "env": {
+        "NODE_OPTIONS": "--enable-source-maps"
+      },
+      "serverReadyAction": {
+        // Matches the Vite "Local:" line and launches Chrome debugger automatically.
+        "pattern": "Local:\\s+(https?://localhost:5173/?)",
+        "action": "debugWithChrome",
+        "uriFormat": "%s"
+      },
+      "presentation": {
+        "group": "dev",
+        "order": 1
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Chrome (Manual Attach http://localhost:5173)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "presentation": { "group": "dev", "order": 2 }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node Logic Only (NO_DOM)",
+      "program": "${workspaceFolder}/index.js",
+      "cwd": "${workspaceFolder}",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["--enable-source-maps"],
+      "env": {
+        "NO_DOM": "1",
+        "DEBUG_VALUE": "7",
+        "NODE_OPTIONS": "--enable-source-maps"
+      },
+      "presentation": { "group": "logic", "order": 1 }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Open index.html (file URL)",
+      "file": "${workspaceFolder}/index.html",
+      "presentation": { "group": "misc", "order": 1 }
+    },
+    {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "Edge (Manual Attach http://localhost:5173)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "presentation": { "group": "dev", "order": 3 }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Legacy: Separate Vite + Chrome",
+      "configurations": ["Default Dev (Vite + Auto Browser)", "Chrome (Manual Attach http://localhost:5173)"],
+      "stopAll": true,
+      "presentation": { "group": "dev", "order": 9 }
+    }
+  ]
+}
