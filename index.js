@@ -6,46 +6,56 @@
 
 // Basic conversion factors (from -> to)
 
-const digit = document.getElementById("digit").textContent;
 const convertButton = document.getElementById("convert-button");
 const lengthText = document.getElementById("length");
 const volumeText = document.getElementById("volume");
 const massText = document.getElementById("mass");
 
 function lengthConversion() {
-  const meterToFeetConversion = digit * 3.281;
-  const feetToMeterConversion = digit / 3.281;
-
   convertButton.addEventListener("click", () => {
+    let inputDigitElement = document.getElementById("input-digit").value;
+
+    const meterToFeetConversion = inputDigitElement * 3.281;
+    const feetToMeterConversion = inputDigitElement / 3.281;
+
     lengthText.textContent = `
-         ${digit} meters = ${meterToFeetConversion.toFixed(3)} feet | 
-         ${digit} feet = ${feetToMeterConversion.toFixed(3)} meters
-         `;
+    ${inputDigitElement} meters = ${meterToFeetConversion.toFixed(3)} feet | 
+    ${inputDigitElement} feet = ${feetToMeterConversion.toFixed(3)} meters
+    `;
   });
 }
 
 function volumeConversion() {
-  const literToGallonConversion = digit / 3.785;
-  const gallonToLiterConversion = digit * 3.785;
-
   convertButton.addEventListener("click", () => {
+    let inputDigitElement = document.getElementById("input-digit").value;
+
+    const literToGallonConversion = inputDigitElement / 3.785;
+    const gallonToLiterConversion = inputDigitElement * 3.785;
+
     volumeText.textContent = `
-         ${digit} liters = ${literToGallonConversion.toFixed(3)} gallons | 
-         ${digit} gallons = ${gallonToLiterConversion.toFixed(3)} liters
+         ${inputDigitElement} liters = ${literToGallonConversion.toFixed(
+      3
+    )} gallons | 
+         ${inputDigitElement} gallons = ${gallonToLiterConversion.toFixed(
+      3
+    )} liters
          `;
-  })
+  });
 }
 
 function massConversion() {
-  const kiloToPoundConversion = digit * 2.205;
-  const poundToKiloConversion = digit / 2.205;
-  
   convertButton.addEventListener("click", () => {
+    let inputDigitElement = document.getElementById("input-digit").value;
+
+    const kiloToPoundConversion = inputDigitElement * 2.205;
+    const poundToKiloConversion = inputDigitElement / 2.205;
     massText.textContent = `
-         ${digit} kilos = ${kiloToPoundConversion.toFixed(3)} pounds | 
-         ${digit} pounds = ${poundToKiloConversion.toFixed(3)} kilos
+         ${inputDigitElement} kilos = ${kiloToPoundConversion.toFixed(
+      3
+    )} pounds | 
+         ${inputDigitElement} pounds = ${poundToKiloConversion.toFixed(3)} kilos
          `;
-  })
+  });
 }
 
 lengthConversion();
